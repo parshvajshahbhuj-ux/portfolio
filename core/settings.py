@@ -1,21 +1,22 @@
 """
 Django settings for Parshva Shah's Portfolio.
-Environment-based configuration using .env file.
 """
 
 import os
 from pathlib import Path
-from dotenv import load_dotenv
 
-# Only load .env locally — on Render, env vars are set via dashboard
-if not os.getenv("RENDER"):
+# Load .env only in local development
+try:
+    from dotenv import load_dotenv
     load_dotenv()
+except ImportError:
+    pass
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv("SECRET_KEY", "fallback-secret-key")
-DEBUG = os.getenv("DEBUG", "False") == "True"
-ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")
+SECRET_KEY = os.environ.get("SECRET_KEY", "django-insecure-local-dev-key-only")
+DEBUG = os.environ.get("DEBUG", "False").strip().lower() == "true"
+ALLOWED_HOSTS = [h.strip() for h in os.environ.get("ALLOWED_HOSTS", "localhost,127.0.0.1").split(",")]
 
 INSTALLED_APPS = [
     "portfolio.apps.PortfolioConfig",
@@ -58,11 +59,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "core.wsgi.application"
 
-# Database — SQLite for dev, PostgreSQL for prod via DATABASE_URL
-DATABASE_URL = os.getenv("DATABASE_URL", "")
+# Database
+DATABASE_URL = os.environ.get("DATABASE_URL", "")
 if DATABASE_URL.startswith("postgres"):
     import dj_database_url
-    DATABASES = {"default": dj_database_url.parse(DATABASE_URL)}
+    DATABASES = {"default": dj_database_url.parse(DATABASE_URL, conn_max_age=600)}
 else:
     DATABASES = {
         "default": {
@@ -83,29 +84,25 @@ TIME_ZONE = "Asia/Kolkata"
 USE_I18N = True
 USE_TZ = True
 
-# Static & Media
+# Static files
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 STATICFILES_STORAGE = "whitenoise.storage.CompressedStaticFilesStorage"
 
 # Ensure staticfiles dir exists
-import os as _os
-_os.makedirs(BASE_DIR / "staticfiles", exist_ok=True)
+os.makedirs(BASE_DIR / "staticfiles", exist_ok=True)
 
 MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# Security settings for production
+# Production security
 if not DEBUG:
     SECURE_BROWSER_XSS_FILTER = True
     SECURE_CONTENT_TYPE_NOSNIFF = True
     X_FRAME_OPTIONS = "DENY"
-    SECURE_HSTS_SECONDS = 31536000
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    # Render handles SSL at proxy level — don't redirect internally
     SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True

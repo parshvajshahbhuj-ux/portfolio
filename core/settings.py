@@ -7,7 +7,9 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv()
+# Only load .env locally — on Render, env vars are set via dashboard
+if not os.getenv("RENDER"):
+    load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 

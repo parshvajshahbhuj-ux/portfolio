@@ -1,0 +1,35 @@
+{% load static %}
+<article class="project-card fade-in" data-href="{% url 'project_detail' project.slug %}" data-tags="{{ project.tech_stack|lower }}">
+  <div class="project-card__image">
+    {% if project.image %}
+      <img src="{{ project.image.url }}" alt="{{ project.title }}" loading="lazy" />
+    {% else %}
+      <div class="project-card__placeholder project-card__placeholder--{{ project.slug }}" aria-hidden="true">
+        {% include "components/project_illustrations.html" with slug=project.slug title=project.title %}
+      </div>
+    {% endif %}
+    <div class="project-card__overlay">
+      <div class="project-card__actions">
+        <a href="{{ project.github_link }}" target="_blank" rel="noopener noreferrer" class="btn btn--ghost btn--sm" aria-label="View {{ project.title }} on GitHub">
+          GitHub
+        </a>
+        {% if project.live_demo %}
+          <a href="{{ project.live_demo }}" target="_blank" rel="noopener noreferrer" class="btn btn--primary btn--sm" aria-label="View live demo of {{ project.title }}">
+            Live Demo
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  <div class="project-card__body">
+    <h3 class="project-card__title">
+      <a href="{% url 'project_detail' project.slug %}">{{ project.title }}</a>
+    </h3>
+    <p class="project-card__desc">{{ project.description|truncatewords:20 }}</p>
+    <div class="project-card__tags" aria-label="Technologies used">
+      {% for tech in project.get_tech_list %}
+        <span class="tag">{{ tech }}</span>
+      {% endfor %}
+    </div>
+  </div>
+</article>

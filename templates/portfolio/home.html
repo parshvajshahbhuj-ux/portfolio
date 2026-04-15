@@ -1,0 +1,417 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Parshva Shah — Full Stack Developer & AI Enthusiast{% endblock %}
+{% block meta_description %}B.Tech CSE student building smart systems with code and creativity. Full Stack Developer & AI Enthusiast.{% endblock %}
+
+{% block content %}
+
+<!-- ═══════════════════════════════════════
+     HERO — Split layout with canvas + terminal
+     ═══════════════════════════════════════ -->
+<section class="hero2" id="hero" aria-label="Hero">
+
+  <!-- Particle canvas background -->
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+  <!-- Noise texture overlay -->
+  <div class="hero2__noise" aria-hidden="true"></div>
+
+  <div class="container hero2__container">
+
+    <!-- LEFT: Text content -->
+    <div class="hero2__left">
+
+      <div class="hero2__status fade-in">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span>Available for Internships &amp; Collaborations</span>
+        <span class="status-location">📍 India</span>
+      </div>
+
+      <h1 class="hero2__heading fade-in">
+        <span class="hero2__greeting">Hi, I'm</span>
+        <span class="hero2__name">Parshva<br>Shah</span>
+      </h1>
+
+      <div class="hero2__roles fade-in" aria-live="polite">
+        <span class="role-prefix">&gt;_</span>
+        <span id="typing-text"></span><span class="cursor" aria-hidden="true">|</span>
+      </div>
+
+      <p class="hero2__tagline fade-in">
+        "Building Smart Systems with Code &amp; Creativity"
+      </p>
+
+      <!-- Floating tech pills -->
+      <div class="hero2__tech-pills fade-in" aria-label="Core technologies">
+        <span class="tech-pill tech-pill--python">🐍 Python</span>
+        <span class="tech-pill tech-pill--django">🎸 Django</span>
+        <span class="tech-pill tech-pill--ai">🤖 AI/ML</span>
+        <span class="tech-pill tech-pill--js">⚡ JavaScript</span>
+      </div>
+
+      <div class="hero2__cta fade-in">
+        <a href="{% url 'projects' %}" class="btn btn--primary btn--lg">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          View My Work
+        </a>
+        <a href="{% url 'contact' %}" class="btn btn--ghost btn--lg">Let's Talk</a>
+        <a href="{% static 'resume.pdf' %}" download="Parshva_Shah_Resume.pdf" class="btn btn--ghost btn--lg" aria-label="Download Resume">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Resume
+        </a>
+      </div>
+
+      <!-- Social row -->
+      <div class="hero2__social fade-in">
+        <a href="https://github.com/parshvajshahbhuj-ux" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="https://linkedin.com/in/parshva-shah-b95893279" target="_blank" rel="noopener noreferrer" class="hero-social-link" aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Animated terminal card -->
+    <div class="hero2__right fade-in" aria-hidden="true">
+      <div class="terminal-card">
+        <div class="terminal-card__bar">
+          <span class="t-dot t-dot--red"></span>
+          <span class="t-dot t-dot--yellow"></span>
+          <span class="t-dot t-dot--green"></span>
+          <span class="t-title">parshva@portfolio ~ </span>
+        </div>
+        <div class="terminal-card__body" id="terminal-body">
+          <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">whoami</span></div>
+          <div class="t-line t-output">Parshva Shah — Full Stack Dev &amp; AI Enthusiast</div>
+          <div class="t-line t-gap"></div>
+          <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">cat skills.txt</span></div>
+          <div class="t-line t-output"><span class="t-green">✔</span> Python, Django, Flask</div>
+          <div class="t-line t-output"><span class="t-green">✔</span> JavaScript, Node.js</div>
+          <div class="t-line t-output"><span class="t-green">✔</span> AI/ML, TensorFlow</div>
+          <div class="t-line t-output"><span class="t-green">✔</span> PostgreSQL, MongoDB</div>
+          <div class="t-line t-gap"></div>
+          <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd">git log --oneline</span></div>
+          <div class="t-line t-output"><span class="t-purple">a1b2c3d</span> feat: CapitalNest AI platform</div>
+          <div class="t-line t-output"><span class="t-purple">e4f5g6h</span> feat: TravelMate AI planner</div>
+          <div class="t-line t-output"><span class="t-purple">i7j8k9l</span> feat: CoreInventory system</div>
+          <div class="t-line t-gap"></div>
+          <div class="t-line"><span class="t-prompt">$</span> <span class="t-cmd t-blink">_</span></div>
+        </div>
+      </div>
+
+      <!-- Floating badge cards -->
+      <div class="float-badge float-badge--1">
+        <span>🎓</span> B.Tech CSE
+      </div>
+      <div class="float-badge float-badge--2">
+        <span>⭐</span> CGPA 8.45
+      </div>
+      <div class="float-badge float-badge--3">
+        <span>🚀</span> 6 Projects
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero2__scroll" aria-hidden="true">
+    <div class="scroll-mouse">
+      <div class="scroll-mouse__wheel"></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════
+     BENTO STATS GRID
+     ═══════════════════════════════════════ -->
+<section class="bento-section" aria-label="Stats">
+  <div class="container">
+    <div class="bento-grid">
+
+      <div class="bento-card bento-card--wide fade-in">
+        <div class="bento-card__label">Currently Building</div>
+        <h3>AI-Powered Web Applications</h3>
+        <p>Combining Django backends with machine learning models to create intelligent, scalable systems.</p>
+        <div class="bento-card__tags">
+          <span class="tag">Django</span>
+          <span class="tag">TensorFlow</span>
+          <span class="tag">REST API</span>
+        </div>
+      </div>
+
+      <div class="bento-card bento-card--stat fade-in">
+        <div class="bento-stat__number gradient-text">6+</div>
+        <div class="bento-stat__label">Projects Shipped</div>
+        <div class="bento-stat__icon">🚀</div>
+      </div>
+
+      <div class="bento-card bento-card--stat fade-in">
+        <div class="bento-stat__number gradient-text">8.45</div>
+        <div class="bento-stat__label">CGPA at LJ University</div>
+        <div class="bento-stat__icon">🎓</div>
+      </div>
+
+      <div class="bento-card bento-card--dark fade-in">
+        <div class="bento-card__label">Open To</div>
+        <div class="bento-open-list">
+          <div class="bento-open-item"><span class="open-dot"></span>Internships</div>
+          <div class="bento-open-item"><span class="open-dot"></span>Freelance Projects</div>
+          <div class="bento-open-item"><span class="open-dot"></span>Hackathons</div>
+          <div class="bento-open-item"><span class="open-dot"></span>Open Source</div>
+        </div>
+      </div>
+
+      <div class="bento-card bento-card--stat fade-in">
+        <div class="bento-stat__number gradient-text">10+</div>
+        <div class="bento-stat__label">Technologies</div>
+        <div class="bento-stat__icon">⚡</div>
+      </div>
+
+      <div class="bento-card bento-card--github fade-in">
+        <div class="bento-card__label">Find me on</div>
+        <a href="https://github.com/parshvajshahbhuj-ux" target="_blank" rel="noopener noreferrer" class="bento-github-link">
+          <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          @parshvajshahbhuj-ux →
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     WHY HIRE ME
+     ═══════════════════════════════════════ -->
+<section class="section why-section" aria-labelledby="why-heading">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">Why Me</span>
+      <h2 id="why-heading">What I Bring to the Table</h2>
+      <p>Beyond the code — the qualities that make me a valuable team member</p>
+    </div>
+    <div class="why-grid">
+
+      <div class="why-card fade-in">
+        <div class="why-card__icon" aria-hidden="true">🤖</div>
+        <h3>AI-First Mindset</h3>
+        <p>I don't just build apps — I build smart ones. Every project I take on, I look for opportunities to integrate AI/ML to make it more intelligent and impactful.</p>
+        <div class="why-card__tag">TensorFlow · OpenAI · ML Models</div>
+      </div>
+
+      <div class="why-card fade-in">
+        <div class="why-card__icon" aria-hidden="true">⚡</div>
+        <h3>Fast Learner</h3>
+        <p>I picked up Django, PostgreSQL, and REST APIs while building real projects — not just tutorials. I adapt quickly to new stacks, tools, and team workflows.</p>
+        <div class="why-card__tag">Self-taught · Project-driven · Adaptable</div>
+      </div>
+
+      <div class="why-card fade-in">
+        <div class="why-card__icon" aria-hidden="true">🏗️</div>
+        <h3>Full Stack Ownership</h3>
+        <p>From database schema to frontend animations, I own the full lifecycle. I can work independently or slot into any layer of a team's stack without friction.</p>
+        <div class="why-card__tag">Django · JavaScript · PostgreSQL</div>
+      </div>
+
+      <div class="why-card fade-in">
+        <div class="why-card__icon" aria-hidden="true">🤝</div>
+        <h3>Clear Communicator</h3>
+        <p>I document my code, ask the right questions, and keep stakeholders in the loop. Good software is built on good communication — I take that seriously.</p>
+        <div class="why-card__tag">Collaborative · Documented · Reliable</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     FEATURED PROJECTS
+     ═══════════════════════════════════════ -->
+<section class="section" id="featured-projects" aria-labelledby="projects-heading">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">Featured Work</span>
+      <h2 id="projects-heading">Projects I've Built</h2>
+      <p>A selection of things I've worked on recently</p>
+    </div>
+    <div class="projects-grid">
+      {% for project in projects %}
+        {% include "components/project_card.html" %}
+      {% endfor %}
+    </div>
+    <div class="section-footer fade-in">
+      <a href="{% url 'projects' %}" class="btn btn--ghost">View All Projects →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SKILLS — Marquee strip
+     ═══════════════════════════════════════ -->
+<section class="marquee-section" aria-label="Tech stack">
+  <div class="marquee-track" aria-hidden="true">
+    <div class="marquee-inner">
+      <span>Python</span><span>·</span>
+      <span>Django</span><span>·</span>
+      <span>JavaScript</span><span>·</span>
+      <span>React</span><span>·</span>
+      <span>Node.js</span><span>·</span>
+      <span>PostgreSQL</span><span>·</span>
+      <span>MongoDB</span><span>·</span>
+      <span>TensorFlow</span><span>·</span>
+      <span>Flask</span><span>·</span>
+      <span>Docker</span><span>·</span>
+      <span>REST API</span><span>·</span>
+      <span>Git</span><span>·</span>
+      <!-- duplicate for seamless loop -->
+      <span>Python</span><span>·</span>
+      <span>Django</span><span>·</span>
+      <span>JavaScript</span><span>·</span>
+      <span>React</span><span>·</span>
+      <span>Node.js</span><span>·</span>
+      <span>PostgreSQL</span><span>·</span>
+      <span>MongoDB</span><span>·</span>
+      <span>TensorFlow</span><span>·</span>
+      <span>Flask</span><span>·</span>
+      <span>Docker</span><span>·</span>
+      <span>REST API</span><span>·</span>
+      <span>Git</span><span>·</span>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SKILLS GRID
+     ═══════════════════════════════════════ -->
+<section class="section skills-section" aria-labelledby="skills-heading">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">Tech Stack</span>
+      <h2 id="skills-heading">What I Work With</h2>
+    </div>
+    <div class="skills-grid">
+      {% for category, skill_list in skill_categories.items %}
+        <div class="skill-group glass-card fade-in">
+          <h3 class="skill-group__title">{{ category }}</h3>
+          <div class="skill-group__items">
+            {% for skill in skill_list %}
+              <span class="skill-pill">{{ skill.name }}</span>
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     HACKATHONS & ACHIEVEMENTS
+     ═══════════════════════════════════════ -->
+<section class="section hackathon-section" aria-labelledby="hackathon-heading">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">Competitions</span>
+      <h2 id="hackathon-heading">Hackathons &amp; Achievements</h2>
+      <p>Where I've competed, built, and won</p>
+    </div>
+    <div class="hackathon-list">
+
+      <div class="hackathon-card glass-card fade-in">
+        <div class="hackathon-card__left">
+          <span class="hackathon-year">2026</span>
+          <div class="hackathon-line" aria-hidden="true"></div>
+        </div>
+        <div class="hackathon-card__body">
+          <div class="hackathon-card__header">
+            <div>
+              <h3 class="hackathon-card__title">ODOO Hackathon</h3>
+              <p class="hackathon-card__desc">Developed a distributed Voting Application with a secure, scalable architecture during the hackathon.</p>
+            </div>
+            <span class="hackathon-badge hackathon-badge--participated">Participated</span>
+          </div>
+          <div class="hackathon-card__tags">
+            <span class="tag">Distributed Systems</span>
+            <span class="tag">Web App</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hackathon-card glass-card fade-in">
+        <div class="hackathon-card__left">
+          <span class="hackathon-year">2026</span>
+          <div class="hackathon-line" aria-hidden="true"></div>
+        </div>
+        <div class="hackathon-card__body">
+          <div class="hackathon-card__header">
+            <div>
+              <h3 class="hackathon-card__title">Tic Tech Toe 2026, Gandhinagar</h3>
+              <p class="hackathon-card__desc">Developed a DApp using Blockchain technology based on smart contracts for a decentralized use case.</p>
+            </div>
+            <span class="hackathon-badge hackathon-badge--participated">Participated</span>
+          </div>
+          <div class="hackathon-card__tags">
+            <span class="tag">Blockchain</span>
+            <span class="tag">Smart Contracts</span>
+            <span class="tag">DApp</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hackathon-card glass-card fade-in">
+        <div class="hackathon-card__left">
+          <span class="hackathon-year">2026</span>
+          <div class="hackathon-line hackathon-line--last" aria-hidden="true"></div>
+        </div>
+        <div class="hackathon-card__body">
+          <div class="hackathon-card__header">
+            <div>
+              <h3 class="hackathon-card__title">Binary Brains Contest</h3>
+              <p class="hackathon-card__desc">An idea-based startup thinking contest where our team secured 1st rank with an innovative product concept.</p>
+            </div>
+            <span class="hackathon-badge hackathon-badge--winner">🏆 Grand Prize Winner</span>
+          </div>
+          <div class="hackathon-card__tags">
+            <span class="tag">Startup</span>
+            <span class="tag">Innovation</span>
+            <span class="tag">1st Rank</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     CTA
+     ═══════════════════════════════════════ -->
+<section class="cta-section section" aria-labelledby="cta-heading">
+  <div class="container">
+    <div class="cta-card glass-card fade-in">
+      <div class="cta-card__glow" aria-hidden="true"></div>
+      <h2 id="cta-heading">Let's Build Something Together</h2>
+      <p>Open to internships, freelance projects, and hackathon collaborations.</p>
+      <a href="{% url 'contact' %}" class="btn btn--primary btn--lg">Start a Conversation</a>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  window.typingRoles = [
+    "Full Stack Developer",
+    "AI Enthusiast",
+    "B.Tech CSE Student",
+    "Problem Solver",
+    "Open Source Contributor",
+  ];
+</script>
+<script src="{% static 'js/hero-canvas.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Projects — Parshva Shah{% endblock %}
+{% block meta_description %}Explore projects built by Parshva Shah including AI platforms, web apps, and learning tools.{% endblock %}
+
+{% block content %}
+
+<section class="page-hero section" aria-label="Projects hero">
+  <div class="container">
+    <div class="section-header fade-in">
+      <span class="section-label">Portfolio</span>
+      <h1>Things I've <span class="gradient-text">Built</span></h1>
+      <p class="lead">A collection of projects ranging from AI platforms to full-stack web applications.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="all-projects-heading">
+  <div class="container">
+    <h2 id="all-projects-heading" class="sr-only">All Projects</h2>
+
+    <!-- Filter Bar -->
+    <div class="filter-bar fade-in" role="group" aria-label="Filter projects by technology">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="python">Python</button>
+      <button class="filter-btn" data-filter="django">Django</button>
+      <button class="filter-btn" data-filter="javascript">JavaScript</button>
+      <button class="filter-btn" data-filter="java">Java</button>
+      <button class="filter-btn" data-filter="tensorflow">AI / ML</button>
+      <button class="filter-btn" data-filter="postgresql">PostgreSQL</button>
+    </div>
+
+    {% if projects %}
+      <div class="projects-grid projects-grid--full" id="projects-grid">
+        {% for project in projects %}
+          {% include "components/project_card.html" %}
+        {% endfor %}
+      </div>
+      <p class="filter-empty" id="filter-empty" hidden>No projects match this filter.</p>
+    {% else %}
+      <div class="empty-state fade-in">
+        <p>No projects yet. Check back soon.</p>
+      </div>
+    {% endif %}
+  </div>
+</section>
+
+{% endblock %}

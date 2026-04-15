@@ -1,0 +1,273 @@
+{% comment %}
+  SVG illustrated banners for each project, keyed by slug.
+  Each one is a themed mini-scene that matches the project domain.
+{% endcomment %}
+
+{% if slug == "capitalnest" %}
+{# Stock market / finance theme — candlestick chart + upward trend #}
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <defs>
+    <linearGradient id="cn-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f2027"/>
+      <stop offset="100%" stop-color="#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="cn-line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#06b6d4"/>
+    </linearGradient>
+    <linearGradient id="cn-fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6366f1" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#6366f1" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="200" fill="url(#cn-bg)"/>
+  <!-- Grid lines -->
+  <line x1="0" y1="50" x2="400" y2="50" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <line x1="0" y1="100" x2="400" y2="100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <line x1="0" y1="150" x2="400" y2="150" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+  <!-- Area fill -->
+  <path d="M30,160 L80,130 L130,140 L180,100 L230,110 L280,70 L330,55 L380,30 L380,200 L30,200 Z" fill="url(#cn-fill)"/>
+  <!-- Trend line -->
+  <polyline points="30,160 80,130 130,140 180,100 230,110 280,70 330,55 380,30" fill="none" stroke="url(#cn-line)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Candlesticks -->
+  <rect x="60" y="118" width="8" height="24" rx="1" fill="#10b981"/>
+  <line x1="64" y1="112" x2="64" y2="118" stroke="#10b981" stroke-width="1.5"/>
+  <line x1="64" y1="142" x2="64" y2="148" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="110" y="128" width="8" height="20" rx="1" fill="#ef4444"/>
+  <line x1="114" y1="122" x2="114" y2="128" stroke="#ef4444" stroke-width="1.5"/>
+  <line x1="114" y1="148" x2="114" y2="154" stroke="#ef4444" stroke-width="1.5"/>
+  <rect x="160" y="88" width="8" height="22" rx="1" fill="#10b981"/>
+  <line x1="164" y1="82" x2="164" y2="88" stroke="#10b981" stroke-width="1.5"/>
+  <line x1="164" y1="110" x2="164" y2="116" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="210" y="98" width="8" height="18" rx="1" fill="#ef4444"/>
+  <rect x="260" y="58" width="8" height="20" rx="1" fill="#10b981"/>
+  <line x1="264" y1="52" x2="264" y2="58" stroke="#10b981" stroke-width="1.5"/>
+  <!-- Label -->
+  <text x="20" y="30" font-family="monospace" font-size="11" fill="rgba(255,255,255,0.4)">NIFTY 50</text>
+  <text x="300" y="30" font-family="monospace" font-size="11" fill="#10b981">▲ 2.4%</text>
+  <!-- Dot on line -->
+  <circle cx="380" cy="30" r="5" fill="#6366f1"/>
+  <circle cx="380" cy="30" r="9" fill="none" stroke="#6366f1" stroke-width="1.5" opacity="0.5"/>
+</svg>
+
+{% elif slug == "travelmate" %}
+{# Travel / map theme — globe, route pins #}
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <defs>
+    <linearGradient id="tm-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0c1445"/>
+      <stop offset="100%" stop-color="#1a0533"/>
+    </linearGradient>
+    <radialGradient id="tm-globe" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </radialGradient>
+  </defs>
+  <rect width="400" height="200" fill="url(#tm-bg)"/>
+  <!-- Stars -->
+  <circle cx="20" cy="20" r="1" fill="white" opacity="0.6"/>
+  <circle cx="60" cy="10" r="1" fill="white" opacity="0.4"/>
+  <circle cx="350" cy="15" r="1.5" fill="white" opacity="0.5"/>
+  <circle cx="380" cy="40" r="1" fill="white" opacity="0.3"/>
+  <circle cx="10" cy="80" r="1" fill="white" opacity="0.4"/>
+  <circle cx="390" cy="100" r="1" fill="white" opacity="0.5"/>
+  <!-- Globe -->
+  <circle cx="200" cy="105" r="75" fill="url(#tm-globe)" stroke="rgba(99,102,241,0.3)" stroke-width="1.5"/>
+  <!-- Latitude lines -->
+  <ellipse cx="200" cy="105" rx="75" ry="20" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <ellipse cx="200" cy="105" rx="75" ry="45" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <!-- Longitude lines -->
+  <ellipse cx="200" cy="105" rx="20" ry="75" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+  <ellipse cx="200" cy="105" rx="45" ry="75" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+  <!-- Continents (simplified blobs) -->
+  <path d="M170,75 Q185,68 195,78 Q205,85 198,95 Q188,100 175,92 Z" fill="rgba(16,185,129,0.5)"/>
+  <path d="M210,80 Q225,72 235,82 Q240,92 230,98 Q218,102 210,94 Z" fill="rgba(16,185,129,0.4)"/>
+  <path d="M175,108 Q190,102 200,112 Q205,122 195,128 Q182,130 175,120 Z" fill="rgba(16,185,129,0.45)"/>
+  <!-- Route pins -->
+  <circle cx="185" cy="82" r="5" fill="#f59e0b"/>
+  <line x1="185" y1="82" x2="220" y2="90" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <circle cx="220" cy="90" r="5" fill="#6366f1"/>
+  <line x1="220" y1="90" x2="195" y2="115" stroke="#6366f1" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <circle cx="195" cy="115" r="5" fill="#06b6d4"/>
+  <!-- AI sparkle -->
+  <text x="310" y="50" font-family="sans-serif" font-size="22" fill="rgba(99,102,241,0.6)">✦</text>
+  <text x="50" y="160" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.3)">AI-Powered Itineraries</text>
+</svg>
+
+{% elif slug == "kidzee" %}
+{# Kids learning — colorful blocks, stars, pencil #}
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <defs>
+    <linearGradient id="kz-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a0a2e"/>
+      <stop offset="100%" stop-color="#0a1628"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="200" fill="url(#kz-bg)"/>
+  <!-- Colorful blocks -->
+  <rect x="40" y="110" width="50" height="50" rx="8" fill="#6366f1" opacity="0.85"/>
+  <rect x="100" y="90" width="50" height="70" rx="8" fill="#f59e0b" opacity="0.85"/>
+  <rect x="160" y="120" width="50" height="40" rx="8" fill="#10b981" opacity="0.85"/>
+  <rect x="220" y="100" width="50" height="60" rx="8" fill="#ef4444" opacity="0.85"/>
+  <rect x="280" y="80" width="50" height="80" rx="8" fill="#8b5cf6" opacity="0.85"/>
+  <rect x="340" y="115" width="40" height="45" rx="8" fill="#06b6d4" opacity="0.85"/>
+  <!-- Letters on blocks -->
+  <text x="65" y="143" font-family="sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">A</text>
+  <text x="125" y="133" font-family="sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">B</text>
+  <text x="185" y="148" font-family="sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">C</text>
+  <text x="245" y="138" font-family="sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">1</text>
+  <text x="305" y="128" font-family="sans-serif" font-size="20" font-weight="bold" fill="white" text-anchor="middle">2</text>
+  <text x="360" y="145" font-family="sans-serif" font-size="18" font-weight="bold" fill="white" text-anchor="middle">3</text>
+  <!-- Stars -->
+  <text x="30" y="50" font-size="20" fill="#f59e0b" opacity="0.8">★</text>
+  <text x="180" y="40" font-size="16" fill="#6366f1" opacity="0.7">★</text>
+  <text x="340" y="55" font-size="22" fill="#10b981" opacity="0.8">★</text>
+  <text x="100" y="65" font-size="12" fill="#f59e0b" opacity="0.5">★</text>
+  <text x="260" y="45" font-size="14" fill="#8b5cf6" opacity="0.6">★</text>
+  <!-- Progress bar -->
+  <rect x="40" y="75" width="200" height="8" rx="4" fill="rgba(255,255,255,0.1)"/>
+  <rect x="40" y="75" width="140" height="8" rx="4" fill="url(#cn-line)"/>
+  <text x="250" y="83" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.5)">70%</text>
+</svg>
+
+{% elif slug == "coreinventory" %}
+{# Inventory / warehouse — boxes, shelves, chart #}
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ci-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a1628"/>
+      <stop offset="100%" stop-color="#0f1f0f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="200" fill="url(#ci-bg)"/>
+  <!-- Shelf structure -->
+  <rect x="30" y="60" width="160" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
+  <rect x="30" y="110" width="160" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
+  <rect x="30" y="160" width="160" height="4" rx="2" fill="rgba(255,255,255,0.15)"/>
+  <rect x="30" y="60" width="4" height="104" rx="2" fill="rgba(255,255,255,0.1)"/>
+  <rect x="186" y="60" width="4" height="104" rx="2" fill="rgba(255,255,255,0.1)"/>
+  <!-- Boxes on shelves -->
+  <rect x="40" y="70" width="28" height="36" rx="4" fill="#6366f1" opacity="0.8"/>
+  <rect x="74" y="76" width="28" height="30" rx="4" fill="#8b5cf6" opacity="0.8"/>
+  <rect x="108" y="72" width="28" height="34" rx="4" fill="#6366f1" opacity="0.6"/>
+  <rect x="142" y="78" width="28" height="28" rx="4" fill="#8b5cf6" opacity="0.7"/>
+  <rect x="40" y="120" width="28" height="36" rx="4" fill="#06b6d4" opacity="0.7"/>
+  <rect x="74" y="124" width="28" height="32" rx="4" fill="#6366f1" opacity="0.8"/>
+  <rect x="108" y="118" width="28" height="38" rx="4" fill="#06b6d4" opacity="0.6"/>
+  <!-- Box lines (detail) -->
+  <line x1="54" y1="70" x2="54" y2="106" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <line x1="88" y1="76" x2="88" y2="106" stroke="rgba(255,255,255,0.2)" stroke-width="1"/>
+  <!-- Bar chart on right -->
+  <rect x="230" y="140" width="20" height="20" rx="3" fill="#6366f1" opacity="0.9"/>
+  <rect x="258" y="110" width="20" height="50" rx="3" fill="#8b5cf6" opacity="0.9"/>
+  <rect x="286" y="90" width="20" height="70" rx="3" fill="#06b6d4" opacity="0.9"/>
+  <rect x="314" y="120" width="20" height="40" rx="3" fill="#6366f1" opacity="0.7"/>
+  <rect x="342" y="75" width="20" height="85" rx="3" fill="#10b981" opacity="0.9"/>
+  <line x1="220" y1="165" x2="375" y2="165" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+  <!-- Labels -->
+  <text x="220" y="55" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.4)">STOCK LEVELS</text>
+  <text x="30" y="50" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.4)">WAREHOUSE</text>
+</svg>
+
+{% elif slug == "ai-project-evaluator-platform" %}
+{# AI evaluation — code + score meter + neural nodes #}
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ai-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f0a1e"/>
+      <stop offset="100%" stop-color="#0a1628"/>
+    </linearGradient>
+    <linearGradient id="ai-score" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="100%" stop-color="#10b981"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="200" fill="url(#ai-bg)"/>
+  <!-- Code lines (left) -->
+  <rect x="20" y="30" width="80" height="6" rx="3" fill="rgba(99,102,241,0.6)"/>
+  <rect x="20" y="44" width="120" height="6" rx="3" fill="rgba(255,255,255,0.15)"/>
+  <rect x="30" y="58" width="90" height="6" rx="3" fill="rgba(6,182,212,0.5)"/>
+  <rect x="30" y="72" width="70" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+  <rect x="20" y="86" width="100" height="6" rx="3" fill="rgba(139,92,246,0.5)"/>
+  <rect x="30" y="100" width="60" height="6" rx="3" fill="rgba(255,255,255,0.1)"/>
+  <rect x="20" y="114" width="110" height="6" rx="3" fill="rgba(99,102,241,0.4)"/>
+  <rect x="30" y="128" width="80" height="6" rx="3" fill="rgba(16,185,129,0.4)"/>
+  <!-- Neural network (right) -->
+  <!-- Layer 1 nodes -->
+  <circle cx="260" cy="60" r="8" fill="#6366f1" opacity="0.8"/>
+  <circle cx="260" cy="100" r="8" fill="#6366f1" opacity="0.8"/>
+  <circle cx="260" cy="140" r="8" fill="#6366f1" opacity="0.8"/>
+  <!-- Layer 2 nodes -->
+  <circle cx="310" cy="75" r="8" fill="#8b5cf6" opacity="0.9"/>
+  <circle cx="310" cy="120" r="8" fill="#8b5cf6" opacity="0.9"/>
+  <!-- Layer 3 node -->
+  <circle cx="360" cy="100" r="10" fill="#10b981" opacity="0.9"/>
+  <!-- Connections -->
+  <line x1="268" y1="60" x2="302" y2="75" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+  <line x1="268" y1="60" x2="302" y2="120" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+  <line x1="268" y1="100" x2="302" y2="75" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+  <line x1="268" y1="100" x2="302" y2="120" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+  <line x1="268" y1="140" x2="302" y2="75" stroke="rgba(99,102,241,0.2)" stroke-width="1"/>
+  <line x1="268" y1="140" x2="302" y2="120" stroke="rgba(99,102,241,0.3)" stroke-width="1"/>
+  <line x1="318" y1="75" x2="350" y2="100" stroke="rgba(139,92,246,0.4)" stroke-width="1.5"/>
+  <line x1="318" y1="120" x2="350" y2="100" stroke="rgba(139,92,246,0.4)" stroke-width="1.5"/>
+  <!-- Score bar -->
+  <rect x="20" y="158" width="360" height="8" rx="4" fill="rgba(255,255,255,0.08)"/>
+  <rect x="20" y="158" width="288" height="8" rx="4" fill="url(#ai-score)"/>
+  <text x="316" y="167" font-family="monospace" font-size="10" fill="rgba(255,255,255,0.6)">80%</text>
+  <text x="20" y="185" font-family="monospace" font-size="9" fill="rgba(255,255,255,0.3)">Code Quality Score</text>
+</svg>
+
+{% elif slug == "ai-voice-detector" %}
+{# Voice / audio — waveform + mic + frequency bars #}
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <defs>
+    <linearGradient id="vd-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0f1e"/>
+      <stop offset="100%" stop-color="#1a0a2e"/>
+    </linearGradient>
+    <linearGradient id="vd-wave" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6366f1"/>
+      <stop offset="50%" stop-color="#06b6d4"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="200" fill="url(#vd-bg)"/>
+  <!-- Microphone -->
+  <rect x="185" y="25" width="30" height="50" rx="15" fill="none" stroke="#6366f1" stroke-width="2.5"/>
+  <path d="M170,65 Q170,90 200,90 Q230,90 230,65" fill="none" stroke="#6366f1" stroke-width="2" stroke-linecap="round"/>
+  <line x1="200" y1="90" x2="200" y2="105" stroke="#6366f1" stroke-width="2"/>
+  <line x1="185" y1="105" x2="215" y2="105" stroke="#6366f1" stroke-width="2" stroke-linecap="round"/>
+  <!-- Pulse rings -->
+  <circle cx="200" cy="55" r="45" fill="none" stroke="rgba(99,102,241,0.15)" stroke-width="1.5"/>
+  <circle cx="200" cy="55" r="60" fill="none" stroke="rgba(99,102,241,0.08)" stroke-width="1"/>
+  <!-- Waveform -->
+  <polyline
+    points="20,120 35,120 40,100 45,140 50,90 55,150 60,105 65,130 70,115 75,125 80,118 90,120 100,120 110,95 115,145 120,85 125,155 130,100 135,130 140,112 145,128 150,118 160,120 170,120 180,120 200,120 220,120 230,120 240,95 245,145 250,85 255,155 260,100 265,130 270,112 275,128 280,118 290,120 300,120 310,120 320,120 330,120 340,120 350,120 360,120 380,120"
+    fill="none" stroke="url(#vd-wave)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Frequency bars (bottom) -->
+  <rect x="30" y="158" width="8" height="15" rx="2" fill="#6366f1" opacity="0.7"/>
+  <rect x="44" y="150" width="8" height="23" rx="2" fill="#8b5cf6" opacity="0.8"/>
+  <rect x="58" y="155" width="8" height="18" rx="2" fill="#06b6d4" opacity="0.7"/>
+  <rect x="72" y="145" width="8" height="28" rx="2" fill="#6366f1" opacity="0.9"/>
+  <rect x="86" y="152" width="8" height="21" rx="2" fill="#8b5cf6" opacity="0.7"/>
+  <rect x="100" y="148" width="8" height="25" rx="2" fill="#06b6d4" opacity="0.8"/>
+  <!-- Detected label -->
+  <rect x="280" y="148" width="100" height="26" rx="6" fill="rgba(16,185,129,0.15)" stroke="rgba(16,185,129,0.3)" stroke-width="1"/>
+  <circle cx="294" cy="161" r="4" fill="#10b981"/>
+  <text x="304" y="165" font-family="monospace" font-size="10" fill="#10b981">DETECTED</text>
+
+{% else %}
+{# Generic fallback — abstract gradient with code symbols #}
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+  <defs>
+    <linearGradient id="gen-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f0a1e"/>
+      <stop offset="100%" stop-color="#0a1628"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="200" fill="url(#gen-bg)"/>
+  <text x="200" y="90" font-family="monospace" font-size="48" fill="rgba(99,102,241,0.3)" text-anchor="middle">&lt;/&gt;</text>
+  <text x="200" y="130" font-family="monospace" font-size="12" fill="rgba(255,255,255,0.2)" text-anchor="middle">{{ title }}</text>
+</svg>
+{% endif %}
